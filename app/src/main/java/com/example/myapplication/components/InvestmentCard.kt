@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,12 +9,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun InvestmentCard(code: String, earnings: String, amount: String, date: String, onMoreDetailsClick: () -> Unit = {} // adiciona um parâmetro com ação de clique
+fun InvestmentCard(code: String, earnings: String, amount: String, date: String, testTag: String, onMoreDetailsClick: () -> Unit = {} // adiciona um parâmetro com ação de clique
 ) {
     val showDialog = remember { mutableStateOf(false) }
 
@@ -43,6 +44,7 @@ fun InvestmentCard(code: String, earnings: String, amount: String, date: String,
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
+            .testTag(testTag)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = code, fontWeight = FontWeight.Bold, fontSize = 16.sp)
