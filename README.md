@@ -1,6 +1,3 @@
-Aqui está o README em **Markdown**:
-
-
 # Projeto de Ensino: Testes End-to-End (E2E) com Espresso
 
 Este projeto foi desenvolvido como um material de apoio para aulas de testes End-to-End (E2E) com **Espresso**, a biblioteca de testes de UI do Android. O objetivo deste projeto é proporcionar aos alunos uma compreensão prática sobre como criar, organizar e executar testes E2E para aplicativos Android utilizando Espresso.
