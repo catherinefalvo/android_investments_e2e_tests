@@ -8,17 +8,17 @@ import androidx.compose.ui.test.performClick
 
 class MainActivityRobot(private val composeTestRule: ComposeTestRule) {
 
-    // Function to click the "Proventos" tab
-    fun clickOnProventosTab() {
+    // Function to click the "Earnings" tab
+    fun clickOnEarningsTab() {
         composeTestRule
-            .onNodeWithText("Proventos")
+            .onNodeWithText("Earnings")
             .performClick()
     }
 
-    // Function to click the "Carteira" tab
-    fun clickOnCarteiraTab() {
+    // Function to click the "Wallet" tab
+    fun clickOnWalletTab() {
         composeTestRule
-            .onNodeWithText("Carteira")
+            .onNodeWithText("Wallet")
             .performClick()
     }
 

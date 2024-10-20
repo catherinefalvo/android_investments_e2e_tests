@@ -1,18 +1,14 @@
 package com.example.myapplication.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -25,43 +21,60 @@ fun InvestmentScreen(paddingValues: PaddingValues) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF1E1EFF))
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF23374D), // Deep blue for top
+                        Color(0xFF374B73)  // Softer blue towards bottom
+                    )
+                )
+            )
             .padding(paddingValues)
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 20.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        // Total value at the top
+        // Total value at the top with improved typography
         Text(
-            text = "R$ 43,62",
-            fontSize = 32.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
+            text = "Total Investments",
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Light,
+            color = Color.White.copy(alpha = 0.7f), // Softer white
             modifier = Modifier
-                .padding(vertical = 16.dp)
+                .padding(top = 32.dp)
                 .align(Alignment.CenterHorizontally)
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // List of investments
-        val investments = listOf(
-            Investment("MXRF11", "Rendimento: R$ 0,09", "R$ 11,52", "DAQUI A 2 DIAS"),
-            Investment("VISC11", "Rendimento: R$ 0,80", "R$ 10,40", "DAQUI A 2 DIAS"),
-            Investment("RVBI11", "Rendimento: R$ 0,75", "R$ 18,75", "DAQUI A 3 DIAS"),
-            Investment("CPTS11", "Rendimento: R$ 0,07", "R$ 2,95", "DAQUI A 5 DIAS"),
-            Investment("MCHY11", "Rendimento: NÃO INFORMADO", "--", "NÃO INFORMADO")
+        Text(
+            text = "R$ 43,62",
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White, // More vibrant color for the total amount
+            modifier = Modifier
+                .padding(vertical = 12.dp)
+                .align(Alignment.CenterHorizontally)
         )
 
-        // Dynamically create InvestmentCard components
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // List of investments with updated styling
+        val investments = listOf(
+            Investment("MXRF11", "Earnings: R$ 0.09", "R$ 11.52", "IN 2 DAYS"),
+            Investment("VISC11", "Earnings: R$ 0.80", "R$ 10.40", "IN 2 DAYS"),
+            Investment("RVBI11", "Earnings: R$ 0.75", "R$ 18.75", "IN 3 DAYS"),
+            Investment("CPTS11", "Earnings: R$ 0.07", "R$ 2.95", "IN 5 DAYS"),
+            Investment("MCHY11", "Earnings: NOT INFORMED", "--", "NOT INFORMED")
+        )
+
+        // Dynamically create InvestmentCard components with better visuals
         investments.forEach { investment ->
             InvestmentCard(
                 code = investment.title,
                 earnings = investment.rendimento,
                 amount = investment.value,
                 date = investment.date,
-                testTag = investment.title
+                testTag = investment.title,
+                modifier = Modifier.padding(vertical = 12.dp)
             )
-            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

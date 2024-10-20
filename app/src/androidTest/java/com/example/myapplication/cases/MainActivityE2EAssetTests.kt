@@ -19,11 +19,11 @@ class MainActivityE2EAssetTests {
     @Test
     fun testMXRF11OnInvestmentAndWalletScreen() {
         // Step 1: Check MXRF11 on Investment Screen
-        robot.clickOnProventosTab()
+        robot.clickOnEarningsTab()
         robot.verifyInvestmentCardIsDisplayed("MXRF11")
 
         // Step 2: Switch to Wallet Screen
-        robot.clickOnCarteiraTab()
+        robot.clickOnWalletTab()
         robot.verifyWalletEntryIsDisplayed("MXRF11")
     }
 }

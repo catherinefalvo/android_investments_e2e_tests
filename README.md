@@ -67,14 +67,14 @@ Exemplo de como um teste básico pode ser estruturado:
 ```kotlin
 @Test
 fun testMXRF11OnInvestmentAndWalletScreen() {
-    // Simular interação na aba "Proventos"
-    robot.clickOnProventosTab()
-    // Verificar que o cartão de investimento MXRF11 está visível
+    // Simulate interaction on the "Earnings" tab
+    robot.clickOnEarningsTab()
+    // Verify that the MXRF11 investment card is visible
     robot.verifyInvestmentCardIsDisplayed("MXRF11")
 
-    // Simular troca para a aba "Carteira"
-    robot.clickOnCarteiraTab()
-    // Verificar que a entrada MXRF11 está visível na carteira
+    // Simulate switching to the "Wallet" tab
+    robot.clickOnWalletTab()
+    // Verify that the MXRF11 entry is visible in the wallet
     robot.verifyWalletEntryIsDisplayed("MXRF11")
 }
 ```

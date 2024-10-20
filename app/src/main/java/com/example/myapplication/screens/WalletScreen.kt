@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -20,37 +21,41 @@ data class WalletAssetItem(
     val quantity: String
 )
 
-
 @Composable
 fun WalletScreen(paddingValues: PaddingValues) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF1E1EFF))  // Keep the same background color
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF23374D), // Deep blue for top
+                        Color(0xFF374B73)  // Softer blue towards bottom
+                    )
+                )
+            )
             .padding(paddingValues)
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 20.dp)
             .verticalScroll(rememberScrollState())  // Enable vertical scrolling for the list
     ) {
-        // Title section
         Text(
-            text = "Minha Carteira",
-            fontSize = 24.sp,
+            text = "My Wallet",
+            fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White,
             modifier = Modifier
-                .padding(vertical = 16.dp)
+                .padding(vertical = 24.dp)
                 .align(Alignment.CenterHorizontally)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // List of items in the wallet
         val walletAssetsItems = listOf(
-            WalletAssetItem("MXRF11", "128 cotas"),
-            WalletAssetItem("CPTS11", "41 cotas"),
-            WalletAssetItem("MCHY11", "20 cotas"),
-            WalletAssetItem("RVBI11", "25 cotas"),
-            WalletAssetItem("VISC11", "18 cotas")
+            WalletAssetItem("MXRF11", "128 shares"),
+            WalletAssetItem("CPTS11", "41 shares"),
+            WalletAssetItem("MCHY11", "20 shares"),
+            WalletAssetItem("RVBI11", "25 shares"),
+            WalletAssetItem("VISC11", "18 shares")
         )
 
         // Render each asset item using AssetItem
@@ -61,16 +66,22 @@ fun WalletScreen(paddingValues: PaddingValues) {
 
         Spacer(modifier = Modifier.weight(1f))  // Pushes the button to the bottom
 
-        // Add button
         Button(
             onClick = { /* Add action */ },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 16.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF00D19E)),
-            shape = RoundedCornerShape(50)
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFFFA000) // Vibrant orange color for visibility
+            ),
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp), // Added elevation for a 3D effect
+            shape = RoundedCornerShape(12.dp) // Rounded corners for a modern look
         ) {
-            Text(text = "Adicione FIIs", fontWeight = FontWeight.Bold)
+            Text(
+                text = "Add investments",
+                fontWeight = FontWeight.Bold,
+                color = Color.White // White text for better contrast
+            )
         }
     }
 }
