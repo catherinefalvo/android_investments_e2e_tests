@@ -24,6 +24,6 @@ class MainActivityE2EAssetTests {
 
         // Step 2: Switch to Wallet Screen
         robot.clickOnWalletTab()
-        robot.verifyWalletEntryIsDisplayed("MXRF11")
+        robot.verifyWalletEntryIsDisplayed("VISC11")
     }
 }

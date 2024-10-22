@@ -16,78 +16,80 @@ class MainActivityTest {
 
     @Test
     fun testMainActivityUIComponents() {
-//        // Check if the main amount "R$ 43,62" is displayed
-//        composeTestRule
-//            .onNodeWithText("R$ 43,62")
-//            .assertIsDisplayed()
-//
-//        // Check if InvestmentCard for "MXRF11" is displayed with the correct values
-//        composeTestRule
-//            .onNodeWithText("MXRF11")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("Rendimento: R$ 0,09")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("R$ 11,52")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("DAQUI A 2 DIAS")
-//            .assertIsDisplayed()
-//
-//        // Check if InvestmentCard for "VISC11" is displayed with the correct values
-//        composeTestRule
-//            .onNodeWithText("VISC11")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("Rendimento: R$ 0,80")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("R$ 10,40")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("DAQUI A 2 DIAS")
-//            .assertIsDisplayed()
-//
-//        // Similarly, check for other InvestmentCards
-//        composeTestRule
-//            .onNodeWithText("RVBI11")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("Rendimento: R$ 0,75")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("R$ 18,75")
-//            .assertIsDisplayed()
-//        composeTestRule
-//            .onNodeWithText("DAQUI A 3 DIAS")
-//            .assertIsDisplayed()
+        // Check if the main amount "R$ 43,62" is displayed
+        composeTestRule
+            .onNodeWithText("R$ 43,62")
+            .assertIsDisplayed()
 
+        // Check if InvestmentCard for "MXRF11" is displayed with the correct values
         composeTestRule
-            .onNodeWithText("CPTS11")
+            .onNodeWithText("MXRF11")
+            .onParent() // Limit the scope to the parent card containing "MXRF11"
             .assertIsDisplayed()
-        composeTestRule
-            .onNodeWithText("Rendimento: R$ 0,07")
-            .assertIsDisplayed()
-        composeTestRule
-            .onNodeWithText("R$ 2,95")
-            .assertIsDisplayed()
-        composeTestRule
-            .onNodeWithText("DAQUI A 5 DIAS")
+            .onChildren() // Narrow down the children inside this card
+            .filterToOne(hasText("Earnings: R$ 0.09"))
             .assertIsDisplayed()
 
         composeTestRule
-            .onNodeWithText("MCHY11")
+            .onNodeWithText("MXRF11")
+            .onParent()
+            .onChildren()
+            .filterToOne(hasText("R$ 11.52"))
             .assertIsDisplayed()
+
         composeTestRule
-            .onNodeWithText("Rendimento: NÃO INFORMADO")
+            .onNodeWithText("MXRF11")
+            .onParent()
+            .onChildren()
+            .filterToOne(hasText("IN 2 DAYS"))
             .assertIsDisplayed()
+
+        // Check if InvestmentCard for "VISC11" is displayed with the correct values
         composeTestRule
-            .onNodeWithText("--")
+            .onNodeWithText("VISC11")
+            .onParent()
             .assertIsDisplayed()
+            .onChildren()
+            .filterToOne(hasText("Earnings: R$ 0.80"))
+            .assertIsDisplayed()
+
         composeTestRule
-            .onNodeWithText("NÃO INFORMADO")
+            .onNodeWithText("VISC11")
+            .onParent()
+            .onChildren()
+            .filterToOne(hasText("R$ 10.40"))
             .assertIsDisplayed()
+
+        composeTestRule
+            .onNodeWithText("VISC11")
+            .onParent()
+            .onChildren()
+            .filterToOne(hasText("IN 2 DAYS"))
+            .assertIsDisplayed()
+
+        // Similarly, check for other InvestmentCards
+        composeTestRule
+            .onNodeWithText("RVBI11")
+            .onParent()
+            .assertIsDisplayed()
+            .onChildren()
+            .filterToOne(hasText("Earnings: R$ 0.75"))
+            .assertIsDisplayed()
+
+        composeTestRule
+            .onNodeWithText("RVBI11")
+            .onParent()
+            .onChildren()
+            .filterToOne(hasText("R$ 18.75"))
+            .assertIsDisplayed()
+
+        composeTestRule
+            .onNodeWithText("RVBI11")
+            .onParent()
+            .onChildren()
+            .filterToOne(hasText("IN 3 DAYS"))
+            .assertIsDisplayed()
+
     }
 
     @Test
@@ -97,10 +99,9 @@ class MainActivityTest {
         composeTestRule
             .onNodeWithTag("MXRF11")
             .onChildren()
-            .filter(hasText("Rendimento: R$ 0,09"))
+            .filter(hasText("Earnings: R$ 0.09"))
             .assertCountEquals(1)
     }
-
 
     @Test
     fun testScrollToLastInvestmentCard() {
@@ -118,7 +119,7 @@ class MainActivityTest {
         composeTestRule
             .onNodeWithTag("MCHY11")
             .onChildren()
-            .filter(hasText("Rendimento: NÃO INFORMADO"))
+            .filter(hasText("Earnings: NOT INFORMED"))
             .assertCountEquals(1)
 
         composeTestRule
@@ -130,7 +131,7 @@ class MainActivityTest {
         composeTestRule
             .onNodeWithTag("MCHY11")
             .onChildren()
-            .filter(hasText("NÃO INFORMADO"))
+            .filter(hasText("NOT INFORMED"))
             .assertCountEquals(1)
     }
 }

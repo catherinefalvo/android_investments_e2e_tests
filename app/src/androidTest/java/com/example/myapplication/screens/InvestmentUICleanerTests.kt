@@ -45,17 +45,17 @@ class MainActivityTestCleaner {
         // Verify InvestmentCard for "CPTS11"
         verifyInvestmentCardDisplayed(
             title = "CPTS11",
-            rendimento = "Rendimento: R$ 0,07",
-            value = "R$ 2,95",
-            date = "DAQUI A 5 DIAS"
+            rendimento = "Earnings: R$ 0.07",
+            value = "R$ 2.95",
+            date = "IN 5 DAYS"
         )
 
         // Verify InvestmentCard for "MCHY11"
         verifyInvestmentCardDisplayed(
             title = "MCHY11",
-            rendimento = "Rendimento: NÃO INFORMADO",
+            rendimento = "Earnings: NOT INFORMED",
             value = "--",
-            date = "NÃO INFORMADO"
+            date = "NOT INFORMED"
         )
     }
 
@@ -65,7 +65,7 @@ class MainActivityTestCleaner {
         composeTestRule
             .onNodeWithTag("MXRF11")
             .onChildren()
-            .filter(hasText("Rendimento: R$ 0,09"))
+            .filter(hasText("Earnings: R$ 0.09"))
             .assertCountEquals(1)
     }
 
@@ -75,9 +75,9 @@ class MainActivityTestCleaner {
         // Verify the last investment card "MCHY11" is displayed
         verifyInvestmentCardDisplayed(
             title = "MCHY11",
-            rendimento = "Rendimento: NÃO INFORMADO",
+            rendimento = "Earnings: NOT INFORMED",
             value = "--",
-            date = "NÃO INFORMADO"
+            date = "NOT INFORMED"
         )
     }
 }
