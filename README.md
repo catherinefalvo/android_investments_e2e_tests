@@ -108,9 +108,8 @@ Contribuições são bem-vindas! Se você encontrar bugs ou tiver sugestões de 
 ## Licença
 
 Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
-```
 
-### GitHub do Projeto:
-[https://github.com/jacksonsmith/android_investments_e2e_tests](https://github.com/jacksonsmith/android_investments_e2e_tests)
+## Evidências de Teste Catherine
 
---- 
+![image](https://github.com/user-attachments/assets/8f077525-5684-4602-903a-c3aa992e3591)
+
